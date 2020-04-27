@@ -13,7 +13,6 @@ var assert = {
             console.log("Test passed " + assertion1 + " is equal to " + assertion2); 
         }
     },
-
   };
 
   function it (description, fun){
@@ -24,4 +23,4 @@ var assert = {
 
 
 
-  //bracket colourizer 
+  //bracket colorizer 
