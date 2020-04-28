@@ -1,6 +1,13 @@
 var notepad = new NotePad();
 
 document.addEventListener("DOMContentLoaded", function () {
+  window.location.hash = "#A"
+  window.addEventListener("hashchange", function () {
+  document.getElementById("content").innerHTML = ""
+  noteIndex = window.location.hash.split("#")[1]
+  console.log(notepad.notes[noteIndex])
+  })
+
   document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault();
     note = createNote();
@@ -37,3 +44,5 @@ function clearForm() {
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
 }
+
+
