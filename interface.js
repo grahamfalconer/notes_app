@@ -1,15 +1,20 @@
 var notepad = new NotePad();
 
 document.addEventListener("DOMContentLoaded", function () {
-  window.location.hash = "#A"
+  let home =  document.getElementById("content")
+  console.log(home)
+  window.location.hash = "#list"
   window.addEventListener("hashchange", function () {
-  let noteIndex = window.location.hash.split("#")[1]
-  let note = notepad.notes[noteIndex]
-  let title =  prepareElement("h1", note.title)
-  let description = prepareElement("p", note.description)
-  let content = document.getElementById("content")
-  content.innerHTML = ""
-  content.append(title, description)
+    
+  if (window.location.hash === "#list" ){
+    let parent = document.getElementById("content").parentNode
+    parent.replaceChild(home, document.getElementById("content"))
+  }
+  else{
+    displayNote();
+  }
+ 
+
   })
 
   document.getElementById("submit").addEventListener("click", function (event) {
@@ -19,6 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
     clearForm();
   });
 });
+
+
+
+function displayNote() {
+  let noteIndex = window.location.hash.split("#")[1];
+  let note = notepad.notes[noteIndex];
+  let title = prepareElement("h1", note.title);
+  let description = prepareElement("p", note.description);
+  let content = document.getElementById("content");
+  content.innerHTML = "";
+  let back = prepareElement("a", "back");
+  content.append(title, description, back);
+  back.setAttribute("href", `#list`);
+}
 
 function createNote() {
   let title = document.getElementById("title").value;
