@@ -3,7 +3,8 @@ var notepad = new NotePad();
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault();
-    createNote();
+    note = createNote();
+    addNoteToList(note.shortDescription, note.title, note.id);
     clearForm();
   });
 });
@@ -11,10 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function createNote() {
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
-
-  let note = notepad.newNote(title, description);
-
-  addNoteToList(note.shortDescription, title, note.id);
+  return notepad.newNote(title, description);
 }
 
 function addNoteToList(description, title, noteId) {
