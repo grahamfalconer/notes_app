@@ -1,14 +1,17 @@
 var notepad = new NotePad();
 
 document.addEventListener("DOMContentLoaded", function () {
-  let home =  document.getElementById("content")
+  let home =  document.getElementById("content").innerHTML
   console.log(home)
   window.location.hash = "#list"
   window.addEventListener("hashchange", function () {
-    
+
   if (window.location.hash === "#list" ){
-    let parent = document.getElementById("content").parentNode
-    parent.replaceChild(home, document.getElementById("content"))
+  document.getElementById("content").innerHTML = home
+  console.log(home)
+  notepad.notes.forEach(note => addNoteToList(note.shortDescription, note.title,note.id))
+
+  
   }
   else{
     displayNote();
