@@ -7,25 +7,27 @@
     <script src="noteTest.js"></script>
     <script src="notepad.js"></script>
     <script src="notepadTest.js"></script>
-
+    <script src="interface.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <title>Notes App</title>
 </head>
 
 <body>
-
+    
     <h1>Notes</h1>
-
+    
     <form>
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
-        <input type="submit">
+        <input id="title" type="title">
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <input id="submit" type="submit">
     </form>
-
+    
     <section>
         <h2>Notes list</h2>
-        <ul>
+        <ul id="notes">
             <li>
                 <a href="">
                     <h3>Title of the note</h3>
@@ -34,7 +36,7 @@
             </li>
         </ul>
     </section>
-
+    
 </body>
 
 </html>
