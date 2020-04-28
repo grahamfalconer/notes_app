@@ -12,9 +12,9 @@ function createNote() {
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
 
-  let noteId = notepad.newNote(title, description).id;
+  let note = notepad.newNote(title, description);
 
-  addNoteToList(description, title, noteId);
+  addNoteToList(note.shortDescription, title, note.id);
 }
 
 function addNoteToList(description, title, noteId) {
