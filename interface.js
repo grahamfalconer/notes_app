@@ -7,16 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("hashchange", function () {
 
   if (window.location.hash === "#list" ){
-  document.getElementById("content").innerHTML = home
-  console.log(home)
-  notepad.notes.forEach(note => addNoteToList(note.shortDescription, note.title,note.id))
-
-  
+  restoreList(home);
   }
   else{
     displayNote();
   }
- 
 
   })
 
@@ -29,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function restoreList(home) {
+  document.getElementById("content").innerHTML = home;
+  console.log(home);
+  notepad.notes.forEach(note => addNoteToList(note.shortDescription, note.title, note.id));
+}
 
 function displayNote() {
   let noteIndex = window.location.hash.split("#")[1];
