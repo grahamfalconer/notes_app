@@ -1,42 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
+var notepad = new NotePad();
 
-  var notepad = new NotePad()
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("submit").addEventListener("click", function (event) {
+    event.preventDefault();
+    createNote();
+    clearForm();
+  });
+});
 
-  document.getElementById('submit').addEventListener("click",function(event){
-    event.preventDefault()
+function createNote() {
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("description").value;
 
-    let title = document.getElementById('title').value
-    let description = document.getElementById('description').value
+  let noteId = notepad.newNote(title, description).id;
 
-    let note = notepad.newNote(title, description)
+  addNoteToList(description, title, noteId);
+}
 
-    titleText = document.createTextNode(title)
-    descriptionText = document.createTextNode(description)
+function addNoteToList(description, title, noteId) {
+  let noteDescription = prepareElement("p", description);
+  let noteTitle = prepareElement("h3", title);
+  let noteLink = document.createElement("a");
+  let noteItem = document.createElement("li");
+  noteItem.append(noteTitle, noteDescription);
+  noteLink.append(noteItem);
+  noteLink.setAttribute("href", `#${noteId}`);
+  document.getElementById("notes").append(noteLink);
+}
 
-    let noteTitle = document.createElement('h3')
-    let noteDescription = document.createElement('p')
-    
-    noteTitle.appendChild(titleText)
-    noteDescription.appendChild(descriptionText)
+function prepareElement(element, text) {
+  text = document.createTextNode(text);
+  let tag = document.createElement(element);
+  tag.appendChild(text);
+  return tag;
+}
 
-    let noteItem = document.createElement('li')
-
-    noteItem.append(noteTitle)
-    noteItem.append(noteDescription)
-
-    let noteLink = document.createElement('a')
-
-    noteLink.append(noteItem)
-
-
-    noteLink.setAttribute('href', `#${note.id}`)
-
-    document.getElementById('notes').append(noteLink)
-
-    document.getElementById('title').value = ""
-    document.getElementById('description').value = ""
-  })
-
-})
-
-
+function clearForm() {
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+}
