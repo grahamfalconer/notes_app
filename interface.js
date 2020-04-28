@@ -3,9 +3,13 @@ var notepad = new NotePad();
 document.addEventListener("DOMContentLoaded", function () {
   window.location.hash = "#A"
   window.addEventListener("hashchange", function () {
-  document.getElementById("content").innerHTML = ""
-  noteIndex = window.location.hash.split("#")[1]
-  console.log(notepad.notes[noteIndex])
+  let noteIndex = window.location.hash.split("#")[1]
+  let note = notepad.notes[noteIndex]
+  let title =  prepareElement("h1", note.title)
+  let description = prepareElement("p", note.description)
+  let content = document.getElementById("content")
+  content.innerHTML = ""
+  content.append(title, description)
   })
 
   document.getElementById("submit").addEventListener("click", function (event) {
