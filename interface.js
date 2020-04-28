@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let title = document.getElementById('title').value
     let description = document.getElementById('description').value
 
-    notepad.newNote(title, description)
+    let note = notepad.newNote(title, description)
 
     titleText = document.createTextNode(title)
     descriptionText = document.createTextNode(description)
@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
     noteLink.append(noteItem)
 
 
-    noteLink.setAttribute('href', '#hello')
+    noteLink.setAttribute('href', `#${note.id}`)
 
     document.getElementById('notes').append(noteLink)
+
+    document.getElementById('title').value = ""
+    document.getElementById('description').value = ""
   })
 
 })

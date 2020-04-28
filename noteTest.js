@@ -1,7 +1,8 @@
 it("can create a note with a description and title", function () {
-  var note = new Note("Testing title", "Test Description");
+  var note = new Note("Testing title", "Test Description", 1);
   assert.isEqual(note.title, "Testing title");
   assert.isEqual(note.description, "Test Description");
+  assert.isEqual(note.id, 1);
 });
 it("will return the first 20 characters if description exceeds 20 characters(nice test bro)", function () {
   var note = new Note(
