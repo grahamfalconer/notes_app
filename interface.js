@@ -1,19 +1,16 @@
 var notepad = new NotePad();
 
 document.addEventListener("DOMContentLoaded", function () {
-  let home =  document.getElementById("content").innerHTML
-  console.log(home)
-  window.location.hash = "#list"
+  let home = document.getElementById("content").innerHTML;
+  console.log(home);
+  window.location.hash = "#list";
   window.addEventListener("hashchange", function () {
-
-  if (window.location.hash === "#list" ){
-  restoreList(home);
-  }
-  else{
-    displayNote();
-  }
-
-  })
+    if (window.location.hash === "#list") {
+      restoreList(home);
+    } else {
+      displayNote();
+    }
+  });
 
   document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault();
@@ -23,11 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 function restoreList(home) {
   document.getElementById("content").innerHTML = home;
   console.log(home);
-  notepad.notes.forEach(note => addNoteToList(note.shortDescription, note.title, note.id));
+  notepad.notes.forEach((note) =>
+    addNoteToList(note.shortDescription, note.title, note.id)
+  );
 }
 
 function displayNote() {
@@ -70,5 +68,3 @@ function clearForm() {
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
 }
-
-
