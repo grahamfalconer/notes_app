@@ -18,7 +18,7 @@ function createNote() {
 }
 
 function addNoteToList(description, title, noteId) {
-  let noteDescription = prepareElement("p", description);
+  let noteDescription = prepareElement("p", description + "...");
   let noteTitle = prepareElement("h3", title);
   let noteLink = document.createElement("a");
   let noteItem = document.createElement("li");
