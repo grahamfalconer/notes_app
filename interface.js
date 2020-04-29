@@ -1,8 +1,8 @@
 var notepad = new NotePad();
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+  renderSubmit()
   let home = document.getElementById("content").innerHTML;
-  console.log(home);
   window.location.hash = "#list";
   window.addEventListener("hashchange", function () {
     if (window.location.hash === "#list") {
@@ -68,3 +68,12 @@ function clearForm() {
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
 }
+
+function renderSubmit() {
+  buttonSub = document.createElement("input")
+  buttonSub.id = "submit"
+  buttonSub.type = "submit"
+  document.getElementsByTagName("form")[0].append(buttonSub)
+}
+
+
