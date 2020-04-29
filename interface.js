@@ -46,14 +46,14 @@ function createNote() {
   return notepad.newNote(title, description);
 }
 
-function addNoteToList(description, title, noteId) {
+function addNoteToList(description, title, id) {
   let noteDescription = prepareElement("p", description + "...");
   let noteTitle = prepareElement("h3", title);
   let noteLink = document.createElement("a");
   let noteItem = document.createElement("li");
   noteItem.append(noteTitle, noteDescription);
   noteLink.append(noteItem);
-  noteLink.setAttribute("href", `#${noteId}`);
+  noteLink.setAttribute("href", `#${id}`);
   document.getElementById("notes").append(noteLink);
 }
 
