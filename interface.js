@@ -31,7 +31,7 @@ function restoreList(home) {
 function displayNote() {
   let noteIndex = window.location.hash.split("#")[1];
   let note = notepad.notes[noteIndex];
-  let title = prepareElement("h1", note.title);
+  let title = prepareElement("h2", note.title);
   let description = prepareElement("p", note.description);
   let content = document.getElementById("content");
   content.innerHTML = "";
