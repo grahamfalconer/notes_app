@@ -1,7 +1,7 @@
 var notepad = new NotePad();
 
 document.addEventListener("DOMContentLoaded", function() {
-  renderSubmit()
+  //renderSubmit()
   let home = document.getElementById("content").innerHTML;
   window.location.hash = "#list";
   window.addEventListener("hashchange", function () {
@@ -10,19 +10,14 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       displayNote();
     }
-  });
+  })
+  submitListener()
+})
 
-  document.getElementById("submit").addEventListener("click", function (event) {
-    event.preventDefault();
-    note = createNote();
-    addNoteToList(note.shortDescription, note.title, note.id);
-    clearForm();
-  });
-});
 
 function restoreList(home) {
   document.getElementById("content").innerHTML = home;
-  console.log(home);
+  submitListener()
   notepad.notes.forEach((note) =>
     addNoteToList(note.shortDescription, note.title, note.id)
   );
@@ -69,11 +64,9 @@ function clearForm() {
   document.getElementById("description").value = "";
 }
 
-function renderSubmit() {
-  buttonSub = document.createElement("input")
-  buttonSub.id = "submit"
-  buttonSub.type = "submit"
-  document.getElementsByTagName("form")[0].append(buttonSub)
-}
-
-
+function submitListener() {
+  document.getElementById("submit").addEventListener("click", function() {
+    note = createNote();
+    addNoteToList(note.shortDescription, note.title, note.id);
+    clearForm();
+  })};
